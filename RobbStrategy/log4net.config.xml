@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<log4net>
+  <!-- the root category -->
+  <root>
+    <level value="DEBUG" />
+    <appender-ref ref="CONSOLE" />
+    <appender-ref ref="DEBUG" />
+    <appender-ref ref="LOGFILE" />
+  </root>
+
+  <!--
+                CONSOLE
+    -->
+  <appender name="CONSOLE" type="log4net.Appender.ColoredConsoleAppender">
+    <param name="Threshold" value="INFO" />
+    <target value="Console.Error" />
+    <mapping>
+      <level value="FATAL" />
+      <foreColor value="Red" />
+      <backColor value="White" />
+    </mapping>
+    <mapping>
+      <level value="ERROR" />
+      <foreColor value="Red, HighIntensity" />
+    </mapping>
+    <mapping>
+      <level value="WARN" />
+      <foreColor value="Yellow, HighIntensity" />
+    </mapping>
+    <mapping>
+      <level value="INFO" />
+      <foreColor value="Cyan, HighIntensity" />
+    </mapping>
+    <mapping>
+      <level value="DEBUG" />
+      <foreColor value="White" />
+    </mapping>
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%5p [%d{HH:mm:ss.fff}][%c{1}:%L] %m%n"/>
+    </layout>
+  </appender>
+
+  <!--
+                DEBUG
+    -->
+  <appender name="DEBUG" type="log4net.Appender.DebugAppender">
+    <param name="Threshold" value="ALL" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%5p [%d{HH:mm:ss.fff}][%c{1}:%L] %m%n"/>
+    </layout>
+  </appender>
+  
+  <!--
+                LOGFILE
+    -->
+  <appender name="LOGFILE" type="log4net.Appender.RollingFileAppender">
+    <threshold value="ALL"/>
+    <lockingModel type="log4net.Appender.FileAppender+MinimalLock"/>
+    <file value="${LOCALAPPDATA}\TradingMotionSDK\logs\DebugBacktest_" />
+    <datePattern value="dd.MM.yyyy'.txt'" />
+    <staticLogFileName value="false" />
+    <appendToFile value="true" />
+    <rollingStyle value="Composite" />
+    <maxSizeRollBackups value="10" />
+    <maximumFileSize value="5MB" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%5p [%d{HH:mm:ss.fff}][%c{1}:%L] %m%n"/>
+    </layout>
+  </appender>
+ 
+
+
+
+</log4net>
