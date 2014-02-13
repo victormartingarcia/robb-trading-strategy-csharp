@@ -15,7 +15,7 @@ Table of Contents
 Overview
 ----
 
-Robb is a trading algorithm written in C# using the [TradingMotion SDK] development tools (there is a [VB.net] port too).
+Robb is a trading algorithm written in C# using the [TradingMotion SDK] development tools (there is a [VB.net port] too).
 
 ![OHLC example chart](markdown_files/OHLC.png)
 <sub>__Image footnote:__ Example of Robb OHLC financial chart showing some automatic trades</sub>
@@ -116,7 +116,7 @@ Disclaimer
 
 I am R&D engineer at [TradingMotion LLC], and head of [TradingMotion SDK] platform. Beware, the info here can be a little biased ;)
 
-  [VB.net port]: https://github.com/victormartingarcia/Robb-trading-strategy-vbnet
+  [VB.net port]: https://github.com/victormartingarcia/robb-trading-strategy-vbnet
   [TradingMotion SDK]: http://sdk.tradingmotion.com
   [RobbStrategy.cs]: RobbStrategy/RobbStrategy.cs
   [iSystems platform]: https://www.isystems.com
