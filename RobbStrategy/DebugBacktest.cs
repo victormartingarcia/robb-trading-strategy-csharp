@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Configuration;
-using TradingMotion.SDK.Algorithms.Debug;
-using TradingMotion.SDK.Markets;
-using TradingMotion.SDK.Markets.Charts;
-using TradingMotion.SDK.Markets.Symbols;
-using TradingMotion.SDK.WebServices;
+using TradingMotion.SDKv2.Algorithms.Debug;
+using TradingMotion.SDKv2.Markets;
+using TradingMotion.SDKv2.Markets.Charts;
+using TradingMotion.SDKv2.Markets.Symbols;
+using TradingMotion.SDKv2.WebServices;
 
 namespace RobbStrategy
 {

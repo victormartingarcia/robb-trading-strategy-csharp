@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using TradingMotion.SDK.Algorithms;
-using TradingMotion.SDK.Algorithms.InputParameters;
-using TradingMotion.SDK.Markets.Charts;
-using TradingMotion.SDK.Markets.Orders;
-using TradingMotion.SDK.Markets.Indicators.StatisticFunctions;
-using TradingMotion.SDK.Markets.Indicators.OverlapStudies;
+using TradingMotion.SDKv2.Algorithms;
+using TradingMotion.SDKv2.Algorithms.InputParameters;
+using TradingMotion.SDKv2.Markets.Charts;
+using TradingMotion.SDKv2.Markets.Orders;
+using TradingMotion.SDKv2.Markets.Indicators.StatisticFunctions;
+using TradingMotion.SDKv2.Markets.Indicators.OverlapStudies;
 
 /// <summary>
 /// Robb Strategy rules:
@@ -86,9 +86,9 @@ namespace RobbStrategy
             // The previous N bars period Bollinger Bands indicator will use
             parameters.Add(new InputParameter("Bollinger Bands period", 58));
             // The distance between the price and the upper Bollinger band
-            parameters.Add(new InputParameter("Upper standard deviations", 3m));
+            parameters.Add(new InputParameter("Upper standard deviations", 3.0));
             // The distance between the price and the lower Bollinger band
-            parameters.Add(new InputParameter("Lower standard deviations", 3m));
+            parameters.Add(new InputParameter("Lower standard deviations", 3.0));
 
             return parameters;
         }
@@ -107,7 +107,7 @@ namespace RobbStrategy
 
             // Adding the Bollinger Bands indicator to the strategy
             // (see http://www.investopedia.com/terms/b/bollingerbands.asp)
-            bollingerBandsIndicator = new BBAndsIndicator(this.Bars.Close, (int)this.GetInputParameter("Bollinger Bands period"), (decimal)this.GetInputParameter("Upper standard deviations"), (decimal)this.GetInputParameter("Lower standard deviations"));
+            bollingerBandsIndicator = new BBAndsIndicator(this.Bars.Close, (int)this.GetInputParameter("Bollinger Bands period"), (double)this.GetInputParameter("Upper standard deviations"), (double)this.GetInputParameter("Lower standard deviations"));
             this.AddIndicator("Bollinger Bands indicator", bollingerBandsIndicator);
         }
 
@@ -120,7 +120,7 @@ namespace RobbStrategy
             if (this.Bars.Close[1] >= bollingerBandsIndicator.GetLowerBand()[1] && this.Bars.Close[0] < bollingerBandsIndicator.GetLowerBand()[0] && this.GetOpenPosition() == 0)
             {
                 // Entering short and placing a profit target 3 standard deviations below the current market price
-                this.Sell(OrderType.Market, 1, 0m, "Enter short position");
+                this.Sell(OrderType.Market, 1, 0.0, "Enter short position");
                 this.ExitShort(OrderType.Limit, this.Bars.Close[0] - standardDeviationIndicator.GetStdDev()[0], "Exit short position (profit target)");
             }
             else if (this.GetOpenPosition() == -1)
