@@ -35,7 +35,7 @@ namespace RobbStrategy
             DateTime endBacktestDate = DateTime.Parse(DateTime.Now.AddDays(-1).ToShortDateString() + " 23:59:59");
 
             TradingMotionAPIClient.Instance.SetUp("https://www.tradingmotion.com/api/webservice.asmx", ConfigurationManager.AppSettings["TradingMotionAPILogin"], ConfigurationManager.AppSettings["TradingMotionAPIPassword"]); //Enter your TradingMotion credentials on the app.config file
-            HistoricalDataAPIClient.Instance.SetUp("http://barserver.tradingmotion.com/WSHistoricalData/webservice.asmx");
+            HistoricalDataAPIClient.Instance.SetUp("https://barserver.tradingmotion.com/WSHistoricalDatav2/webservice.asmx");
 
             RobbStrategy s = new RobbStrategy(new Chart(SymbolFactory.GetSymbol("FESX"), BarPeriodType.Minute, 30), null);
 
